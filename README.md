@@ -29,9 +29,9 @@ $ cat aelfjj1or81uegj9ea8z31zro.html
 |[Bitbucket](#bitbucket)|Yes|`Repository not found`||
 |[Campaign Monitor](#campaign-monitor)|Yes||[Support Page](https://help.campaignmonitor.com/custom-domain-names)|
 |[Cargo Collective](#cargo-collective)|Yes|`404 Not Found`|[Cargo Support Page](http://support.2.cargocollective.com/Using-a-Third-Party-Domain)|
-|[Cloudfront](#cloudfront)|Yes|`Bad Request: ERROR: The request could not be satisfied`|https://blog.zsec.uk/subdomainhijack/|
+|[Cloudfront](#cloudfront)|Sometimes|`Bad Request: ERROR: The request could not be satisfied`|https://blog.zsec.uk/subdomainhijack/|
 |[Desk](#desk)|Yes|`Sorry, We Couldn't Find That Page`||
-|[Fastly](#fastly)|Yes|`Fastly error: unknown domain:`||
+|[Fastly](#fastly)|Sometimes|`Fastly error: unknown domain:`||
 |[Feedpress](#feedpress)|Yes|`The feed has not been found.`|https://hackerone.com/reports/195350|
 |[Freshdesk](#freshdesk)|No||[Freshdesk Support Page](https://support.freshdesk.com/support/solutions/articles/37590-using-a-vanity-support-url-and-pointing-the-cname)|
 |[Ghost](#ghost)|Yes|`The thing you were looking for is no longer here, or never was`||
@@ -90,7 +90,7 @@ GitLab require a text record with a verification token in order to set the custo
 If a domain has a CNAME record for `*.s3.amazonaws.com` and is returning `NoSuchBucket`, then all you need to do is to create a bucket with that name. You will need an AWS account, however, you can use the [free tier](https://aws.amazon.com/free/) which is more than enough for a PoC. You can then upload a simple txt file at a random path as a proof of concept. 
 
 ## Cloudfront
-**Answer:** Yes :heavy_check_mark:
+**Answer:** Yes :question:
 
 When it comes to Cloudfront subdomain takeovers always check both ports 80 and 443. The error message "Bad Request" must be displayed on both ports to ensure that one can claim it on AWS.
 
@@ -98,6 +98,7 @@ If you find a domain that displays this error message, try adding that domain as
 
 Reference: https://blog.zsec.uk/subdomainhijack/
 
+> This has been recently patched by AWS but it is still possible in edge cases
 ## Statuspage
 **Answer:** Yes :heavy_check_mark: 
 
@@ -129,9 +130,9 @@ To create a service an account at https://portal.azure.com is needed (a valid CC
 **Answer:** Yes :heavy_check_mark: 
 
 ## Fastly
-**Answer:** Yes :heavy_check_mark:
+**Answer:** Yes :question:
 
-Subdomains can be taken over if the root domain doesn't already belong to a Fastly account.
+Subdomains can only be taken over if the root domain doesn't already belong to a Fastly account. Expired past domains can no longer be takenover.
 
 ## Heroku
 **Answer:** Yes :heavy_check_mark: 
